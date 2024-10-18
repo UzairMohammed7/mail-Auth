@@ -29,11 +29,11 @@ const ProtectedRoute = ({ children }) => {
 
 // redirect authenticated users to the home page
 const RedirectAuthenticatedUser = ({ children }) => {
-	const { isAuthenticated, user } = useAuthStore();
-	if (isAuthenticated && user.isVerified) {
-		return <Navigate to='/' replace />;
-	}
-	return children;
+    const { isAuthenticated, user } = useAuthStore();
+    if (isAuthenticated && user.isVerified) {
+	return <Navigate to='/' replace />;
+    }
+    return children;
 };
 
 function App() {
@@ -58,8 +58,8 @@ function App() {
         <Route path="/login" element={<RedirectAuthenticatedUser><LoginPage /></RedirectAuthenticatedUser>} />
         <Route path="/verify-email" element={<EmailVerificationPage />} />
         <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>}/>
-				<Route path='/reset-password/:token' element={<RedirectAuthenticatedUser><ResetPasswordPage /></RedirectAuthenticatedUser>}/>
-				<Route path='*' element={<Navigate to='/' replace />} />
+	<Route path='/reset-password/:token' element={<RedirectAuthenticatedUser><ResetPasswordPage /></RedirectAuthenticatedUser>}/>
+	<Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
       <Toaster />
     </div>
